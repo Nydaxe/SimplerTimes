@@ -36,7 +36,7 @@ public class SoundEffectManager : MonoBehaviour
         PlaySoundEffect(placeAudioSource, volume);
     }
 
-    public void PlayButtonSound(float volume = 1f)
+    public void PlayButtonSound(float volume = .6f)
     {
         PlaySoundEffect(buttonAudioSource, volume);
     }
