@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,17 +30,16 @@ public class GameManager : MonoBehaviour
         volume = newVolume;
     }
 
-    IEnumerator Start()
+    public void FinishLevel()
     {
-        while(true)
-        {
-            yield return new WaitForSeconds(1f);
-            CheckWinConditions();
-        }
+        int levelScore = CheckWinConditions();
+        Debug.Log("Level Complete! Score: " + levelScore);
     }
 
-    void CheckWinConditions()
+    int CheckWinConditions()
     {
+        int score = 0;
+
         for(int i = 0; i < winConditionObjects.Count; i++)
         {
             Vector2 targetPosition = (Vector2)catylistConditionObject.transform.position + winConditionRelativePositions[i];
@@ -47,10 +47,12 @@ public class GameManager : MonoBehaviour
 
             if(requiredTile == null || !requiredTile.contents.Contains(winConditionObjects[i]))
             {
-                return;
+                continue;
             }
+
+            score++;
         }
 
-        Debug.Log("You Win!");
+        return Mathf.RoundToInt((score / winConditionObjects.Count) * 100f);
     }
 }

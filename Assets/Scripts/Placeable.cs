@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class Placeable : MonoBehaviour
     public Vector2 offset;
 
     public Tile occupiedTile {get; private set;}
+
+    public event Action<Tile> onPlace;
 
 
     public bool Place(Tile tile, bool allowPlaceNeighbors = false)
@@ -60,6 +63,7 @@ public class Placeable : MonoBehaviour
         tile.AddItem(gameObject);
         occupiedTile = tile;
 
+        onPlace?.Invoke(tile);
         transform.position = tile.centerPosition - offset;
         
         return true;

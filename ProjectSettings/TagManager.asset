@@ -44,5 +44,8 @@ TagManager:
   - name: Placeable
     uniqueID: 4154027373
     locked: 0
+  - name: UI
+    uniqueID: 2705826603
+    locked: 0
   m_RenderingLayers:
   - Default
