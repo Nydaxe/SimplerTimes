@@ -14,4 +14,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public float volume;
+
+    void Start()
+    {
+        
+    }
+}
+
+public struct GameSettings
+{
+    public float musicVolume;
+    public float sfxVolume;
 }

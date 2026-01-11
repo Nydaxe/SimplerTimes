@@ -5,7 +5,8 @@ public class SoundEffectManager : MonoBehaviour
 {
     public static SoundEffectManager instance;
     [SerializeField] AudioSource pickupAudioSource;
-    [SerializeField] AudioSource placeAdioSource;
+    [SerializeField] AudioSource placeAudioSource;
+    [SerializeField] AudioSource buttonAudioSource;
 
     void Awake()
     {
@@ -21,7 +22,7 @@ public class SoundEffectManager : MonoBehaviour
 
     public void PlaySoundEffect(AudioSource source, float volume = 1f)
     {
-        source.volume = volume;
+        source.volume = volume * GameManager.instance.volume;
         source.Play();
     }
 
@@ -32,6 +33,11 @@ public class SoundEffectManager : MonoBehaviour
 
     public void PlayPlaceSound(float volume = 1f)
     {
-        PlaySoundEffect(placeAdioSource, volume);
+        PlaySoundEffect(placeAudioSource, volume);
+    }
+
+    public void PlayButtonSound(float volume = 1f)
+    {
+        PlaySoundEffect(buttonAudioSource, volume);
     }
 }

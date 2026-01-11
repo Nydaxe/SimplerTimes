@@ -73,6 +73,7 @@ public class Draggable : MonoBehaviour
         if(!placed)
         {
             transform.position = lastPosition;
+            placeable.Place(GridManager.grid.GetTileWithWorldPosition((Vector2)lastPosition + placeable.offset), true);
         }
         
         dragging = false;

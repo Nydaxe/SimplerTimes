@@ -13,11 +13,6 @@ public class Placeable : MonoBehaviour
 
     public bool Place(Tile tile, bool allowPlaceNeighbors = false)
     {
-        if(!AbleToPlace(tile) || tile == null)
-        {
-            return false;
-        }
-
         if(additionalOccupiedTiles.Length > 0)
         {
             foreach(Vector2Int offset in additionalOccupiedTiles)
@@ -31,6 +26,8 @@ public class Placeable : MonoBehaviour
         }
         else if(!AbleToPlace(tile))
         {
+            bool foundNewTile = false;
+
             Tile[] neighbors = tile.GetNeighbors();
             neighbors = neighbors.OrderBy(tile => Vector2.Distance(transform.position, tile.centerPosition)).ToArray();
 
@@ -38,23 +35,30 @@ public class Placeable : MonoBehaviour
             {
                 if(neighbor != null && AbleToPlace(neighbor))
                 {
+                    foundNewTile = true;
                     tile = neighbor;
                     break;
                 }
+            }
 
+            if(!foundNewTile)
+            {
                 return false;
             }
+        }
+
+        if(!AbleToPlace(tile) || tile == null)
+        {
+            return false;
         }
 
         foreach(Vector2Int additionalTileOffset in additionalOccupiedTiles)
         {
             Tile additionalTile = GridManager.grid.GetTile(tile.x + additionalTileOffset.x, tile.y + additionalTileOffset.y);
             additionalTile.AddItem(gameObject);
-            Debug.Log("Placed at " + additionalTile.x + ", " + additionalTile.y);
         }
         tile.AddItem(gameObject);
         occupiedTile = tile;
-        Debug.Log("Placed at " + tile.x + ", " + tile.y);
 
         transform.position = tile.centerPosition - offset;
         
@@ -79,6 +83,6 @@ public class Placeable : MonoBehaviour
     
     void Start()
     {
-        Place(GridManager.grid.GetTileWithWorldPosition(transform.position));
+        Place(GridManager.grid.GetTileWithWorldPosition((Vector2)transform.position + offset));
     }
 }
