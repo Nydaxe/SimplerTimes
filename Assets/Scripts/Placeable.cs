@@ -62,7 +62,6 @@ public class Placeable : MonoBehaviour
         }
         tile.AddItem(gameObject);
         occupiedTile = tile;
-        Debug.Log("Placed " + gameObject.name + " on tile at " + tile.x + ", " + tile.y);
 
         onPlace?.Invoke(tile);
         transform.position = tile.centerPosition - offset;

@@ -29,7 +29,6 @@ public class SceneFader : MonoBehaviour
         Light2D[] lights = FindObjectsByType<Light2D>(FindObjectsSortMode.None);
         if (lights.Length == 0)
         {
-            Debug.LogError("No Light2D found in scene!");
             return;
         }
         
@@ -42,7 +41,11 @@ public class SceneFader : MonoBehaviour
     {
         if (globalLight == null)
         {
-            Debug.LogError("globalLight not initialized!");
+            return;
+        }
+        
+        if(sceneIndex >= scenes.Length - 1)
+        {
             return;
         }
         
@@ -58,7 +61,6 @@ public class SceneFader : MonoBehaviour
         
         if (sceneIndex >= scenes.Length)
         {
-            Debug.LogError("Scene index out of bounds!");
             return;
         }
         

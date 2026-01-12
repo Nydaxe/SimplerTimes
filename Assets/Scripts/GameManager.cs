@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
     public async void FinishLevel()
     {
         int levelScore = CheckWinConditions();
-        Debug.Log("Level Complete! Score: " + levelScore);
         scoreText.text = "Score: " + levelScore + "%";
         scoreText.gameObject.SetActive(true);
         await Awaitable.WaitForSecondsAsync(4f);
@@ -69,11 +68,9 @@ public class GameManager : MonoBehaviour
 
             if(requiredTile == null || !requiredTile.contents.Contains(winConditionObjects[i]))
             {
-                Debug.Log(winConditionObjects[i].name + " not in " + requiredTile.x + ", " + requiredTile.y);
                 continue;
             }
 
-            Debug.Log("Found " + winConditionObjects[i].name + " in " + requiredTile.x + ", " + requiredTile.y);
             score++;
         }
 
@@ -82,8 +79,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ShowDrawing()
     {
-        Debug.Log("Showing drawing");
-
         yield return new WaitForSeconds(5f);
 
         drawing.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
