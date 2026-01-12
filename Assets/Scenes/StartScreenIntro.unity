@@ -1289,11 +1289,7 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3386441377794725697, guid: e4ee994a8bb05424ea32dc4e7b26201b, type: 3}
-      propertyPath: 'scenes.Array.data[3]'
-      value: HouseLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386441377794725697, guid: e4ee994a8bb05424ea32dc4e7b26201b, type: 3}
-      propertyPath: 'scenes.Array.data[4]'
+      propertyPath: 'scenes.Array.data[5]'
       value: CabLevel
       objectReference: {fileID: 0}
     - target: {fileID: 4478017058403694597, guid: e4ee994a8bb05424ea32dc4e7b26201b, type: 3}

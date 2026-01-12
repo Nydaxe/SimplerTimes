@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         if(drawing == null)
             return;
 
+        drawing.SetActive(true);
         doneButton.SetActive(false);
         StartCoroutine("ShowDrawing");
     }
@@ -62,18 +63,19 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < winConditionObjects.Count; i++)
         {
-            Vector2 targetPosition = (Vector2)catylistConditionObject.transform.position + winConditionRelativePositions[i];
+            Vector2 targetPosition = catylistConditionObject.GetComponent<Placeable>().occupiedTile.centerPosition + winConditionRelativePositions[i];
             Tile requiredTile = GridManager.grid.GetTileWithWorldPosition(targetPosition);
 
             if(requiredTile == null || !requiredTile.contents.Contains(winConditionObjects[i]))
             {
+                Debug.Log(winConditionObjects[i].name + " not in " + requiredTile.x + ", " + requiredTile.y);
                 continue;
             }
 
             score++;
         }
 
-        return Mathf.RoundToInt((score / winConditionObjects.Count) * 100f);
+        return Mathf.RoundToInt(score / winConditionObjects.Count * 100f);
     }
 
     IEnumerator ShowDrawing()
