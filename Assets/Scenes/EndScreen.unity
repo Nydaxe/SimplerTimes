@@ -960,7 +960,6 @@ MonoBehaviour:
   talkAudio: {fileID: 1491224374}
   StartingDialogueLines:
   - text: Huh?
-  - text: I wish things were as simple as they used to be
   - text: I must've been dreaming
   - text: It's always nice to visit old memories
   - text: Times like those only last so long I guess
