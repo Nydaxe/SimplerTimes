@@ -63,8 +63,10 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < winConditionObjects.Count; i++)
         {
-            Vector2 targetPosition = catylistConditionObject.GetComponent<Placeable>().occupiedTile.centerPosition + winConditionRelativePositions[i];
-            Tile requiredTile = GridManager.grid.GetTileWithWorldPosition(targetPosition);
+            Tile catylistTile = catylistConditionObject.GetComponent<Placeable>().occupiedTile;
+            Debug.Log(catylistTile.x + ", " + catylistTile.y);
+            Vector2 targetPosition = new Vector2(catylistTile.x, catylistTile.y) + winConditionRelativePositions[i];
+            Tile requiredTile = GridManager.grid.GetTile((int)targetPosition.x, (int)targetPosition.y);
 
             if(requiredTile == null || !requiredTile.contents.Contains(winConditionObjects[i]))
             {
@@ -72,10 +74,11 @@ public class GameManager : MonoBehaviour
                 continue;
             }
 
+            Debug.Log("Found " + winConditionObjects[i].name + " in " + requiredTile.x + ", " + requiredTile.y);
             score++;
         }
 
-        return Mathf.RoundToInt(score / winConditionObjects.Count * 100f);
+        return Mathf.RoundToInt((score / (float)winConditionObjects.Count) * 100f);
     }
 
     IEnumerator ShowDrawing()
