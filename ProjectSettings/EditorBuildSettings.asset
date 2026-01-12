@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartScreenIntro.unity
+    guid: ebca62eba7ce6e4419f5d5d0d3fae3f8
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: a1c6134aaf53f40428d1bdbade9c92d1
+  - enabled: 1
     path: Assets/Scenes/DabbingBearLevel.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:
