@@ -10,12 +10,17 @@ public class StartingDialogue : MonoBehaviour
     [SerializeField] float typeSpeed;
     [SerializeField] AudioSource talkAudio;
     [SerializeField] DialogueLine[] StartingDialogueLines;
+    [SerializeField] bool endingDialogue = false;
     Queue<DialogueLine> lines;
     bool lineFinished = true;
 
     void Start()
     {
         dialoguePanel.SetActive(false);
+        if(endingDialogue == true)
+        {
+            StartDialogue();
+        }
     }
 
     void Update()

@@ -703,14 +703,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
-    - target: {fileID: 4235627094697686549, guid: dfeec24fefb37664fa7b406e03a30b6b, type: 3}
-      propertyPath: offset.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235627094697686549, guid: dfeec24fefb37664fa7b406e03a30b6b, type: 3}
-      propertyPath: offset.y
-      value: -0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 5437091908666438090, guid: dfeec24fefb37664fa7b406e03a30b6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.595

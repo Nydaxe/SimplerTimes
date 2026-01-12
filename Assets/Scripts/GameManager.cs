@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < winConditionObjects.Count; i++)
         {
             Tile catylistTile = catylistConditionObject.GetComponent<Placeable>().occupiedTile;
-            Debug.Log(catylistTile.x + ", " + catylistTile.y);
             Vector2 targetPosition = new Vector2(catylistTile.x, catylistTile.y) + winConditionRelativePositions[i];
             Tile requiredTile = GridManager.grid.GetTile((int)targetPosition.x, (int)targetPosition.y);
 
